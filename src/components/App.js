@@ -5,6 +5,7 @@ import NavBar from './layouts/NavBar';
 import Dashboard from './dashboard/Dashboard';
 import ProjectDetails from './projects/ProjectDetails';
 import SignIn from './auth/SignIn';
+import SignUp from './auth/SignUp';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/' component={Dashboard} />
           <Route path='/project/:id' component={ProjectDetails} />
           <Route path='/signin' component={SignIn} />
+          <Route path='/signup' component={SignUp} />
         </Switch>
       </div>
     </BrowserRouter>
