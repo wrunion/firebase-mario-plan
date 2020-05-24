@@ -13,7 +13,7 @@ const store = createStore(rootReducer);
 const rrfProps = {
   firebase,
   config: {
-    
+
   },
   dispatch: store.dispatch,
   createFirestoreInstance
