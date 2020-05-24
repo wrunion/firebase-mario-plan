@@ -4,23 +4,26 @@ import App from './components/App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './store/reducers/rootReducer';
-// import thunk from 'redux-thunk';
-// import { getFirestore, reduxFirestore } from 'redux-firestore';
-// import { getFirebase, reactReduxFirebase } from 'react-redux-firebase';
-// /* GET THIS INFO BACK FROM .env AND PUT IT IN FBCONFIG.JS */
-// import fbConfig from './config/fbConfig';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+import firebase from './config/firebase';
 
-// const store=createStore(rootReducer, 
-//   compose(  
-//     applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-//     reduxFirestore(fbConfig),
-//     reactReduxFirebase(fbConfig)
-//   )
-// );
+const store = createStore(rootReducer);
+
+const rrfProps = {
+  firebase,
+  config: {
+    
+  },
+  dispatch: store.dispatch,
+  createFirestoreInstance
+}
 
 ReactDOM.render(
-  <Provider store={createStore(rootReducer)}>
-    <App />
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider { ...rrfProps}>
+      <App />
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
 );
